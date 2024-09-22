@@ -1,6 +1,8 @@
+import { register } from "@/action/user"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
+
 
 const Register = () => {
   return (
@@ -8,19 +10,19 @@ const Register = () => {
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
             Welcome
         </h2>
-        <form className="my-8">
+        <form className="my-8" action={register}>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
                 <div className="flex flex-col"> 
                 <Label className="mb-2" htmlFor="firstname" >
                     First Name
                 </Label>
-                <Input id="firstname" placeholder="firstname" type="text" name="firstname"/>
+                <Input id="firstName" placeholder="firstname" type="text" name="firstName"/>
                 </div>
                 <div className="flex flex-col">
                 <Label  htmlFor="lastname"  className="mb-2">
                     Last name
                 </Label>
-                <Input id="lastname" placeholder="lastname" type="text" name="lastname"/>
+                <Input id="lastName" placeholder="lastname" type="text" name="lastName"/>
                 </div>
                 </div>
                
