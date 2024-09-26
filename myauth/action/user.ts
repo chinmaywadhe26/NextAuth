@@ -1,6 +1,6 @@
 "use server"
 import connectDB from "@/lib/db"
-import { User } from "@/app/models/User"
+import { User } from "@/models/User"
 import { redirect } from "next/navigation"
 import {hash} from "bcryptjs"
 import { CredentialsSignin } from "next-auth"
@@ -21,7 +21,7 @@ const login = async (formData: FormData) => {
         const someErr = error as CredentialsSignin
         return someErr.cause
     }
-    redirect('/')
+    redirect("/")
 }
 const register = async  (formData: FormData) => {
     const firstName = formData.get("firstName") as string
@@ -46,4 +46,9 @@ const register = async  (formData: FormData) => {
     redirect('/login')
 }
 
-export {register, login}
+const fetchAllUsers = async () => {
+await connectDB()
+const users = await User.find({})
+return users
+}
+export {register, login, fetchAllUsers}
